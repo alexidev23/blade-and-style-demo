@@ -1,38 +1,44 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
+	import { isExternal } from '../../../utils/links';
 
 	type Variant = 'primary' | 'secondary';
 
-	interface Props extends HTMLButtonAttributes {
-		variant?: Variant;
-		children: Snippet;
-	}
+	type Base = { variant?: Variant; children: Snippet };
+	type AsButton = Base & HTMLButtonAttributes & { href?: never };
+	type AsAnchor = Base & HTMLAnchorAttributes & { href: string };
+	type Props = AsButton | AsAnchor;
 
-	let {
-		variant = 'primary',
-		type = 'button',
-		class: className,
-		children,
-		...rest
-	}: Props = $props();
+	let { variant = 'primary', class: className, children, ...rest }: Props = $props();
 
 	const variants: Record<Variant, string> = {
-		primary: 'bg-primary text-on-primary enabled:hover:bg-champagne enabled:hover:shadow-glow',
-		secondary: 'bg-surface-raised text-text enabled:hover:bg-primary enabled:hover:text-on-primary'
+		primary:
+			'bg-primary text-on-primary not-disabled:hover:bg-champagne not-disabled:hover:shadow-glow',
+		secondary:
+			'bg-surface-raised text-text not-disabled:hover:bg-primary not-disabled:hover:text-on-primary'
 	};
-</script>
 
-<button
-	{type}
-	class={[
+	const classes = $derived([
 		'inline-flex cursor-pointer items-center justify-center gap-2 rounded-sm px-6 py-3 font-semibold tracking-wide transition',
 		'[&_svg]:size-4 [&_svg]:shrink-0',
 		'disabled:cursor-not-allowed disabled:opacity-50',
 		variants[variant],
 		className
-	]}
-	{...rest}
->
-	{@render children()}
-</button>
+	]);
+</script>
+
+{#if rest.href !== undefined}
+	<a
+		class={classes}
+		target={isExternal(rest.href) ? '_blank' : undefined}
+		rel={isExternal(rest.href) ? 'noopener noreferrer' : undefined}
+		{...rest}
+	>
+		{@render children()}
+	</a>
+{:else}
+	<button type="button" class={classes} {...rest}>
+		{@render children()}
+	</button>
+{/if}
