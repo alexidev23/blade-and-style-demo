@@ -13,6 +13,7 @@
 	--color-muted: #8e929d; /* metadatos, íconos, placeholders */
 	--color-text: #f5f5f7; /* texto principal */
 	--color-error: #ffb4ab; /* validación de formularios */
+	--color-canvas-deep: #0d0e11; /* franjas de sección y footer */
 
 	/* Tipografías */
 	--font-display: 'EB Garamond Variable', serif;
