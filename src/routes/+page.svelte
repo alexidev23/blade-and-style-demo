@@ -1,11 +1,12 @@
 <script lang="ts">
+	import Barbers from '#lib/components/sections/Barbers.svelte';
 	import Header from '#lib/components/sections/Header.svelte';
 	import Hero from '#lib/components/sections/Hero.svelte';
 	import Services from '#lib/components/sections/Services.svelte';
-	import type { Service } from '#lib/types.ts';
+	import type { Barber, Service } from '#lib/types.ts';
 
-	function openBooking(service?: Service) {
-		console.log('abrir modal', service?.id);
+	function openBooking(options: { service?: Service; barber?: Barber } = {}) {
+		console.log('abrir modal', options.service?.id, options.barber?.id);
 	}
 </script>
 
@@ -13,5 +14,6 @@
 
 <main class="pt-16 lg:pt-20">
 	<Hero />
-	<Services onselect={openBooking} />
+	<Services onselect={(service) => openBooking({ service })} />
+	<Barbers onselect={(barber) => openBooking({ barber })} />
 </main>

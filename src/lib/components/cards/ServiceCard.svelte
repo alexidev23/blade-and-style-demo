@@ -28,7 +28,7 @@
 
 	<div>
 		<div class="mb-4 flex items-center justify-between gap-2">
-			<Badge variant={service.featured ? 'primary' : 'subtle'}>{service.tag}</Badge>
+			<Badge variant={service.featured ? 'primary' : 'subtle'}>{service.category}</Badge>
 			<span
 				class="flex items-center gap-1 text-sm {service.featured ? 'text-primary' : 'text-muted'}"
 			>

@@ -20,7 +20,7 @@
 		description="Tratamientos meticulosos diseñados para el caballero moderno. Cada sesión incluye consulta personalizada y productos botánicos premium."
 	/>
 
-	<ul class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+	<ul class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 		{#each services as service (service.id)}
 			<li class="flex">
 				<ServiceCard {service} {onselect} />
