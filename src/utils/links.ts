@@ -1,1 +1,1 @@
-export const isExternal = (href?: string) => !!href && /^https?:\/\//.test(href);
+export const isExternal = (href?: string | null) => !!href && /^https?:\/\//.test(href);
