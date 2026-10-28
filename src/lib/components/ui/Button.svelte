@@ -5,12 +5,19 @@
 
 	type Variant = 'primary' | 'secondary';
 
-	type Base = { variant?: Variant; children: Snippet };
 	type AsButton = Base & HTMLButtonAttributes & { href?: never };
 	type AsAnchor = Base & HTMLAnchorAttributes & { href: string };
 	type Props = AsButton | AsAnchor;
+	type Size = 'md' | 'sm';
 
-	let { variant = 'primary', class: className, children, ...rest }: Props = $props();
+	type Base = { variant?: Variant; size?: Size; children: Snippet };
+
+	let { variant = 'primary', size = 'md', class: className, children, ...rest }: Props = $props();
+
+	const sizes: Record<Size, string> = {
+		md: 'px-6 py-3',
+		sm: 'px-4 py-2'
+	};
 
 	const variants: Record<Variant, string> = {
 		primary:
