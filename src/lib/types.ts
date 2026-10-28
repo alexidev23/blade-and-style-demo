@@ -3,15 +3,30 @@ export interface NavItem {
 	label: string;
 }
 
-export type ServiceTag = 'Esencial' | 'Tradicional' | 'Completo VIP' | 'Tratamiento';
+export type ServiceCategory = 'Corte' | 'Barba' | 'Combo' | 'Color' | 'Infantil';
 
 export interface Service {
 	id: string;
 	name: string;
 	description: string;
-	tag: ServiceTag;
+	category: ServiceCategory;
 	/** Precio en pesos argentinos, número entero. */
 	price: number;
 	durationMin: number;
+	featured?: boolean;
+}
+
+export interface Barber {
+	id: string;
+	name: string;
+	role: string;
+	specialty: string;
+	bio: string;
+	experienceYears: number;
+	/** URL de la foto importada desde $lib/assets. */
+	photo: string;
+	photoAlt: string;
+	/** ids de los servicios que realiza (ver data/services.ts). */
+	serviceIds: string[];
 	featured?: boolean;
 }
