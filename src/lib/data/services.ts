@@ -3,40 +3,58 @@ import type { Service } from '#lib/types.ts';
 // Precios de ejemplo para la demo.
 export const services: Service[] = [
 	{
-		id: 'corte-signature',
-		name: 'Corte Signature Atelier',
+		id: 'corte',
+		name: 'Corte de cabello',
 		description:
-			'Diagnóstico capilar individualizado, corte de autor a tijera o máquina de alta precisión, lavado purificante tonificante y finalizado con peinado pomade.',
-		tag: 'Esencial',
-		price: 15000,
-		durationMin: 45
-	},
-	{
-		id: 'ritual-barba',
-		name: 'Ritual de Barba Imperial',
-		description:
-			'Doble tratamiento de toallas calientes al vapor con aceites orgánicos de cedro, perfilado magistral a navaja japonesa y sellado con bálsamo frío refrescante.',
-		tag: 'Tradicional',
+			'Corte clásico a tijera o máquina, adaptado a la forma de tu rostro. Incluye lavado, secado y peinado final con pomada.',
+		category: 'Corte',
 		price: 12000,
-		durationMin: 35
+		durationMin: 40
 	},
 	{
-		id: 'experiencia-royal',
-		name: 'La Experiencia Royal',
+		id: 'corte-y-barba',
+		name: 'Corte y barba',
 		description:
-			'El combo definitivo: corte de autor completo, ritual de barba imperial integral, mascarilla facial negra purificante de carbón activado y masaje craneal descontracturante.',
-		tag: 'Completo VIP',
-		price: 25000,
-		durationMin: 75,
+			'El combo completo: corte de autor y arreglo de barba con perfilado a navaja, toalla caliente y bálsamo hidratante. Salís listo para cualquier ocasión.',
+		category: 'Combo',
+		price: 18000,
+		durationMin: 60,
 		featured: true
 	},
 	{
-		id: 'camuflaje-canas',
-		name: 'Camuflaje de Canas & Color',
+		id: 'tenido',
+		name: 'Teñido de cabello',
 		description:
-			'Difuminado natural de canas con pigmentos suaves, aplicado con técnica de precisión para un resultado sutil, sin cambios bruscos de tono.',
-		tag: 'Tratamiento',
-		price: 11000,
-		durationMin: 40
+			'Coloración y matizado profesional: cobertura de canas, tonos naturales o cambio de look, con productos que cuidan el cuero cabelludo.',
+		category: 'Color',
+		price: 20000,
+		durationMin: 90
+	},
+	{
+		id: 'arreglo-de-barba',
+		name: 'Arreglo de barba',
+		description:
+			'Perfilado y recorte de barba con navaja, definición de mejillas y cuello, y aceite nutritivo para suavizar el vello.',
+		category: 'Barba',
+		price: 8000,
+		durationMin: 25
+	},
+	{
+		id: 'afeitado-clasico',
+		name: 'Afeitado clásico a navaja',
+		description:
+			'Afeitado tradicional con toallas calientes, espuma artesanal y navaja de filo recto. Una experiencia de relax y precisión.',
+		category: 'Barba',
+		price: 10000,
+		durationMin: 30
+	},
+	{
+		id: 'corte-infantil',
+		name: 'Corte infantil',
+		description:
+			'Corte para chicos de hasta 12 años, con paciencia y buen humor. Incluye peinado y un ambiente tranquilo para los más chiquitos.',
+		category: 'Infantil',
+		price: 9000,
+		durationMin: 30
 	}
 ];
