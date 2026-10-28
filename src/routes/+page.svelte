@@ -1,15 +1,17 @@
 <script lang="ts">
 	import Header from '#lib/components/sections/Header.svelte';
 	import Hero from '#lib/components/sections/Hero.svelte';
+	import Services from '#lib/components/sections/Services.svelte';
+	import type { Service } from '#lib/types.ts';
+
+	function openBooking(service?: Service) {
+		console.log('abrir modal', service?.id);
+	}
 </script>
 
-<Header onbook={() => console.log('abrir modal')} />
+<Header onbook={() => openBooking()} />
 
 <main class="pt-16 lg:pt-20">
 	<Hero />
-	{#each ['servicios', 'barberos', 'estandares', 'ubicacion'] as id (id)}
-		<section {id} class="grid h-screen place-items-center border-b border-primary/20 text-3xl">
-			{id}
-		</section>
-	{/each}
+	<Services onselect={openBooking} />
 </main>
