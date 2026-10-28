@@ -1,13 +1,13 @@
-<svelte:head>
-	<title>Blade & Style</title>
-</svelte:head>
+<script lang="ts">
+	import Header from '#lib/components/sections/Header.svelte';
+</script>
 
-<main class="p-8">
-	<h1 class="font-display text-display-sm text-primary md:text-display">Blade & Style</h1>
-	<p class="text-muted">Tokens funcionando.</p>
-	<button
-		class="mt-6 rounded-sm bg-primary px-6 py-3 font-semibold tracking-wide text-on-primary transition hover:bg-champagne hover:shadow-glow"
-	>
-		Reservar cita
-	</button>
+<Header onbook={() => console.log('abrir modal')} />
+
+<main class="pt-16 lg:pt-20">
+	{#each ['inicio', 'servicios', 'barberos', 'estandares', 'ubicacion'] as id (id)}
+		<section {id} class="grid h-screen place-items-center border-b border-primary/20 text-3xl">
+			{id}
+		</section>
+	{/each}
 </main>
