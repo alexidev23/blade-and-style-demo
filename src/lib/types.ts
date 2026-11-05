@@ -50,3 +50,12 @@ export interface Barber {
 	serviceIds: string[];
 	featured?: boolean;
 }
+
+export type StandardIconId = 'craft' | 'hygiene' | 'lounge' | 'exclusive';
+
+export interface Standard {
+	id: string;
+	title: string;
+	description: string;
+	icon: StandardIconId;
+}
