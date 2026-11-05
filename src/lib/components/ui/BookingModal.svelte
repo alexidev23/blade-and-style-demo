@@ -76,7 +76,7 @@
 		if (event.target === dialog) onclose();
 	}}
 	aria-labelledby="booking-modal-title"
-	class="max-h-[90dvh] w-[min(92vw,30rem)] overflow-y-auto rounded-lg border border-primary/12 bg-surface-raised p-0 text-text shadow-card backdrop:bg-canvas-deep/80 backdrop:backdrop-blur-sm"
+	class="m-auto max-h-[90dvh] w-[min(92vw,30rem)] overflow-y-auto rounded-lg border border-primary/12 bg-surface-raised p-0 text-text shadow-card backdrop:bg-canvas-deep/80 backdrop:backdrop-blur-sm"
 >
 	{#if draft && service}
 		<div class="relative p-6 sm:p-8">
