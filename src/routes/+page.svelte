@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Barbers from '#lib/components/sections/Barbers.svelte';
+	import Footer from '#lib/components/sections/Footer.svelte';
 	import Header from '#lib/components/sections/Header.svelte';
 	import Hero from '#lib/components/sections/Hero.svelte';
 	import Services from '#lib/components/sections/Services.svelte';
@@ -17,3 +18,5 @@
 	<Services onselect={(service) => openBooking({ service })} />
 	<Barbers onselect={(barber) => openBooking({ barber })} />
 </main>
+
+<Footer />
