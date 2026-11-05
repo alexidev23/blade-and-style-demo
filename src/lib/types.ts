@@ -59,3 +59,11 @@ export interface Standard {
 	description: string;
 	icon: StandardIconId;
 }
+
+export interface BookingDraft {
+	serviceId: string;
+	/** id del barbero; cadena vacía = cualquier maestro disponible. */
+	barberId: string;
+	/** Fecha en formato ISO yyyy-mm-dd. */
+	date: string;
+}
