@@ -1,7 +1,7 @@
 import type { Barber } from '#lib/types.ts';
-import carlos from '$lib/assets/barbers/carlos.jpg';
-import david from '$lib/assets/barbers/david.jpg';
-import mateo from '$lib/assets/barbers/mateo.jpg';
+import carlos from '#lib/assets/barbers/carlos.jpg';
+import david from '#lib/assets/barbers/david.jpg';
+import mateo from '#lib/assets/barbers/mateo.jpg';
 
 export const barbers: Barber[] = [
 	{

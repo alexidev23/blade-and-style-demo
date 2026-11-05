@@ -12,6 +12,10 @@ node_modules
 .DS_Store
 Thumbs.db
 
+# Local design references and tooling caches
+/docs
+/.atl
+
 # Env
 .env
 .env.*
