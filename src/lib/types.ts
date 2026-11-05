@@ -67,3 +67,15 @@ export interface BookingDraft {
 	/** Fecha en formato ISO yyyy-mm-dd. */
 	date: string;
 }
+
+export interface Testimonial {
+	id: string;
+	quote: string;
+	author: string;
+	/** Iniciales mostradas en el avatar. */
+	initials: string;
+	/** Ciudad o barrio del cliente. */
+	location: string;
+	/** Puntaje otorgado, de 1 a 5. */
+	rating: number;
+}
