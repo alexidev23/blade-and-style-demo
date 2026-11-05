@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Barbers from '#lib/components/sections/Barbers.svelte';
+	import Banner from '#lib/components/sections/Banner.svelte';
 	import BookingWidget from '#lib/components/sections/BookingWidget.svelte';
 	import Contact from '#lib/components/sections/Contact.svelte';
 	import Experience from '#lib/components/sections/Experience.svelte';
@@ -7,6 +8,7 @@
 	import Header from '#lib/components/sections/Header.svelte';
 	import Hero from '#lib/components/sections/Hero.svelte';
 	import Services from '#lib/components/sections/Services.svelte';
+	import Testimonials from '#lib/components/sections/Testimonials.svelte';
 	import BookingModal from '#lib/components/ui/BookingModal.svelte';
 	import { services } from '#lib/data/services.ts';
 	import type { Barber, BookingDraft, Service } from '#lib/types.ts';
@@ -35,6 +37,8 @@
 	<Services onselect={(service) => openBooking({ service })} />
 	<Experience />
 	<Barbers onselect={(barber) => openBooking({ barber })} />
+	<Testimonials />
+	<Banner />
 	<Contact />
 </main>
 
