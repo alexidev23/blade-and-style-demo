@@ -26,6 +26,7 @@ Delivery: chained PRs on top of `main`; deploy target is Vercel (adapter-auto al
 - **S18** `/manifest.webmanifest` is served and linked from the document, referencing the existing 192px and 512px icons.
 - **S19** `/robots.txt` allows crawling and points to `/sitemap.xml`; `/sitemap.xml` lists the home URL absolutely. Both are prerendered at build time.
 - **S20** The footer no longer shows links that go nowhere; the demo notice replaces the placeholder legal links.
+- **S21** The project ships no unused Tailwind plugins, and the README documents the stack, scripts, project layout, the Vercel deploy flow and `PUBLIC_SITE_URL`.
 
 ## Tasks
 
@@ -46,6 +47,8 @@ Delivery: chained PRs on top of `main`; deploy target is Vercel (adapter-auto al
 | T13 | S18        | inline | done   | `5309390` — `static/manifest.webmanifest`                      |
 | T14 | S19        | inline | done   | `5309390` — `routes/robots.txt`, `routes/sitemap.xml`          |
 | T15 | S20        | inline | done   | `5309390` — `Footer.svelte`                                    |
+| T16 | S21        | inline | done   | `d5dbd98` — `@tailwindcss/typography` removed                  |
+| T17 | S21        | inline | done   | `d5dbd98` — `README.md`                                        |
 
 ## Log
 
@@ -56,3 +59,4 @@ Delivery: chained PRs on top of `main`; deploy target is Vercel (adapter-auto al
 - **L5** Unit 2 verified: same four checks green; built CSS contains the `7d715a` token, `not-sr-only` and the skip-link z-index.
 - **L6** Pending decisions: real business data (address, phone, socials, domain) for the SEO unit; what to do with the footer legal links that currently point to `#`.
 - **L7** User confirmed this is a demo, so SEO uses the `site.ts` example data. Domain comes from `PUBLIC_SITE_URL` (SvelteKit 3 `defineEnvVars` in `src/env.ts`) with the Vercel demo origin as fallback. The footer legal links were removed and replaced by a "Sitio de demostración" notice (S20). Unit 3 verified: `pnpm test` 18 passed, `pnpm lint` clean, `svelte-check` 0/0, `pnpm build` green; prerendered output contains title, description, canonical, OG/Twitter tags, JSON-LD, `robots.txt` with `Sitemap:` and `sitemap.xml`.
+- **L8** Unit 4: the audit flagged `@tailwindcss/typography` as unused, but it was registered via `@plugin` in `layout.css`; since no `prose` classes exist, both the dependency and the directive were removed. README rewritten for the demo (stack, scripts, structure, Vercel deploy, `PUBLIC_SITE_URL`). `.env.example` could not be created: the runtime denies writes to `.env*` paths. Verified: `pnpm test` 18 passed, `pnpm lint` clean, `svelte-check` 0/0, `pnpm build` green.
