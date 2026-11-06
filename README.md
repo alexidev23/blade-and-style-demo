@@ -42,7 +42,6 @@ src/
 		types.ts
 	utils/                  # lógica de reserva y formateo
 static/                   # íconos, manifest, assets
-odd/tasks/                # documento de la feature de hardening
 ```
 
 ## Despliegue en Vercel
