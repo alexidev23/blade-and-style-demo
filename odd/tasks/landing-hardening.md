@@ -2,7 +2,7 @@
 
 Objective: harden the Blade & Style landing page (booking correctness, a11y, SEO, build) after a skills-based audit.
 Branch: `fix/booking-logic` → `fix/a11y-ux` → `feat/seo-metadata` → `chore/build-deploy` (chained, each under review budget).
-Delivery: chained PRs on top of `main`; deploy target is Vercel (adapter-auto already supported). Test runner: Vitest.
+Delivery: direct merge into `main` (changed from chained PRs, see L9); deploy target is Vercel (adapter-auto already supported). Test runner: Vitest.
 
 ## Specs
 
@@ -60,3 +60,4 @@ Delivery: chained PRs on top of `main`; deploy target is Vercel (adapter-auto al
 - **L6** Pending decisions: real business data (address, phone, socials, domain) for the SEO unit; what to do with the footer legal links that currently point to `#`.
 - **L7** User confirmed this is a demo, so SEO uses the `site.ts` example data. Domain comes from `PUBLIC_SITE_URL` (SvelteKit 3 `defineEnvVars` in `src/env.ts`) with the Vercel demo origin as fallback. The footer legal links were removed and replaced by a "Sitio de demostración" notice (S20). Unit 3 verified: `pnpm test` 18 passed, `pnpm lint` clean, `svelte-check` 0/0, `pnpm build` green; prerendered output contains title, description, canonical, OG/Twitter tags, JSON-LD, `robots.txt` with `Sitemap:` and `sitemap.xml`.
 - **L8** Unit 4: the audit flagged `@tailwindcss/typography` as unused, but it was registered via `@plugin` in `layout.css`; since no `prose` classes exist, both the dependency and the directive were removed. README rewritten for the demo (stack, scripts, structure, Vercel deploy, `PUBLIC_SITE_URL`). `.env.example` could not be created: the runtime denies writes to `.env*` paths. Verified: `pnpm test` 18 passed, `pnpm lint` clean, `svelte-check` 0/0, `pnpm build` green.
+- **L9** (verbatim) "si, tambien paso todo a la rama main, lo controle y quedo bien" — delivery changes from chained PRs to a direct merge into `main`. `.agents/` and `.claude/` are ignored (generated, duplicated third-party skills); `skills-lock.json` stays tracked as the reproducible source.
