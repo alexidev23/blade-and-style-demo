@@ -19,6 +19,13 @@ Delivery: chained PRs on top of `main`; deploy target is Vercel (adapter-auto al
 - **S11** The promo code fits without horizontal overflow at 320px.
 - **S12** Testimonials show one column below 640px, two from 640px and three from 1024px.
 - **S13** Each booking step moves focus to its heading, and the open dialog locks background scroll.
+- **S14** `src/lib/data/site.ts` stays the single source of business data. The public origin derives from `PUBLIC_SITE_URL` (declared in `src/env.ts`, defaulting to the demo Vercel origin); no other file hardcodes a domain.
+- **S15** Every page renders exactly one `<title>`, one meta description, and one canonical link pointing at the site origin.
+- **S16** Open Graph and Twitter card metadata use `es_AR`, an absolute URL and an absolute image URL.
+- **S17** A `HairSalon` JSON-LD block mirrors the visible data (name, address, phone, hours, social profiles) and escapes `<` inside its JSON.
+- **S18** `/manifest.webmanifest` is served and linked from the document, referencing the existing 192px and 512px icons.
+- **S19** `/robots.txt` allows crawling and points to `/sitemap.xml`; `/sitemap.xml` lists the home URL absolutely. Both are prerendered at build time.
+- **S20** The footer no longer shows links that go nowhere; the demo notice replaces the placeholder legal links.
 
 ## Tasks
 
@@ -33,6 +40,12 @@ Delivery: chained PRs on top of `main`; deploy target is Vercel (adapter-auto al
 | T7  | S10        | inline | done   | `e61b8f6` — `--color-line-strong`                              |
 | T8  | S11        | inline | done   | `e61b8f6` — `Banner.svelte`                                    |
 | T9  | S12        | inline | done   | `e61b8f6` — `Testimonials.svelte`                              |
+| T10 | S14        | inline | done   | `5309390` — `src/env.ts`, `site.ts`                            |
+| T11 | S15-S16    | inline | done   | `5309390` — `seo/SiteMeta.svelte`                              |
+| T12 | S17        | inline | done   | `5309390` — `seo/StructuredData.svelte`                        |
+| T13 | S18        | inline | done   | `5309390` — `static/manifest.webmanifest`                      |
+| T14 | S19        | inline | done   | `5309390` — `routes/robots.txt`, `routes/sitemap.xml`          |
+| T15 | S20        | inline | done   | `5309390` — `Footer.svelte`                                    |
 
 ## Log
 
@@ -42,3 +55,4 @@ Delivery: chained PRs on top of `main`; deploy target is Vercel (adapter-auto al
 - **L4** Unit 1 verified: `pnpm test` 18 passed, `eslint` clean, `svelte-check` 0 errors/0 warnings, `pnpm build` green.
 - **L5** Unit 2 verified: same four checks green; built CSS contains the `7d715a` token, `not-sr-only` and the skip-link z-index.
 - **L6** Pending decisions: real business data (address, phone, socials, domain) for the SEO unit; what to do with the footer legal links that currently point to `#`.
+- **L7** User confirmed this is a demo, so SEO uses the `site.ts` example data. Domain comes from `PUBLIC_SITE_URL` (SvelteKit 3 `defineEnvVars` in `src/env.ts`) with the Vercel demo origin as fallback. The footer legal links were removed and replaced by a "Sitio de demostración" notice (S20). Unit 3 verified: `pnpm test` 18 passed, `pnpm lint` clean, `svelte-check` 0/0, `pnpm build` green; prerendered output contains title, description, canonical, OG/Twitter tags, JSON-LD, `robots.txt` with `Sitemap:` and `sitemap.xml`.
