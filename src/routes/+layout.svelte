@@ -2,6 +2,8 @@
 	import '@fontsource-variable/eb-garamond';
 	import '@fontsource-variable/hanken-grotesk';
 	import './layout.css';
+	import StructuredData from '#lib/components/seo/StructuredData.svelte';
+	import SiteMeta from '#lib/components/seo/SiteMeta.svelte';
 	import type { Snippet } from 'svelte';
 
 	let { children }: { children: Snippet } = $props();
@@ -13,5 +15,8 @@
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	<meta name="theme-color" content="#121316" />
 </svelte:head>
+
+<SiteMeta />
+<StructuredData />
 
 {@render children()}

@@ -4,19 +4,12 @@
 	import MessageCircle from '@lucide/svelte/icons/message-circle';
 	import Scissors from '@lucide/svelte/icons/scissors';
 	import Video from '@lucide/svelte/icons/video';
-	import Link from '../ui/Link.svelte';
 
 	const socialIcons = {
 		instagram: Camera,
 		youtube: Video,
 		whatsapp: MessageCircle
 	} as const;
-
-	const legalLinks = [
-		{ label: 'Privacidad', href: '#' },
-		{ label: 'Términos del servicio', href: '#' },
-		{ label: 'Aviso legal', href: '#' }
-	];
 
 	const year = new Date().getFullYear();
 	const phoneHref = `tel:${site.phone.replace(/\s/g, '')}`;
@@ -103,13 +96,7 @@
 				© {year}
 				{site.name}. Todos los derechos reservados. Excelencia en barbería tradicional.
 			</p>
-			<ul class="flex flex-wrap items-center justify-center gap-6">
-				{#each legalLinks as link (link.label)}
-					<li>
-						<Link variant="footer" href={link.href}>{link.label}</Link>
-					</li>
-				{/each}
-			</ul>
+			<p class="text-xs text-muted">Sitio de demostración. Datos de ejemplo.</p>
 		</div>
 	</div>
 </footer>
