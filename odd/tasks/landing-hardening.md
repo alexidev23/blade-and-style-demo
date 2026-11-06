@@ -14,19 +14,31 @@ Delivery: chained PRs on top of `main`; deploy target is Vercel (adapter-auto al
 - **S6** Close via X button, backdrop click, or Escape calls `onClose` exactly once.
 - **S7** The three modal steps live in dedicated components under `src/lib/components/booking/`, not inline in `BookingModal`.
 - **S8** Booking selection rules are covered by deterministic unit tests; the suite runs with `pnpm test`.
+- **S9** A skip-to-content link is the first focusable element and targets `<main id="contenido">`.
+- **S10** Form controls use a border token with at least 3:1 contrast against their own background.
+- **S11** The promo code fits without horizontal overflow at 320px.
+- **S12** Testimonials show one column below 640px, two from 640px and three from 1024px.
+- **S13** Each booking step moves focus to its heading, and the open dialog locks background scroll.
 
 ## Tasks
 
-| ID  | Specs     | Route  | Status  | Evidence |
-| --- | --------- | ------ | ------- | -------- |
-| T1  | S1-S3, S8 | inline | pending | -        |
-| T2  | S4-S6     | inline | pending | -        |
-| T3  | S7        | inline | pending | -        |
-| T4  | S1-S2     | inline | pending | -        |
-| T5  | S8        | inline | pending | -        |
+| ID  | Specs      | Route  | Status | Evidence                                                       |
+| --- | ---------- | ------ | ------ | -------------------------------------------------------------- |
+| T1  | S1-S3, S8  | inline | done   | `b8611aa` — `src/utils/booking.ts`                             |
+| T2  | S4-S6, S13 | inline | done   | `b8611aa` — derived open state, single close path, scroll lock |
+| T3  | S7         | inline | done   | `b8611aa` — `src/lib/components/booking/*`                     |
+| T4  | S1-S2      | inline | done   | `b8611aa` — `+page.svelte`, `BookingWidget.svelte`             |
+| T5  | S8         | inline | done   | `b8611aa` — 18 tests, `pnpm test`                              |
+| T6  | S9         | inline | done   | `e61b8f6` — `+page.svelte`                                     |
+| T7  | S10        | inline | done   | `e61b8f6` — `--color-line-strong`                              |
+| T8  | S11        | inline | done   | `e61b8f6` — `Banner.svelte`                                    |
+| T9  | S12        | inline | done   | `e61b8f6` — `Testimonials.svelte`                              |
 
 ## Log
 
 - **L1** (verbatim) "ahi agregue unas nuevas skills, podes analizar todo el proyecto de nuevo en busca de mejoras con estas nuevas skills?"
 - **L2** (verbatim) "hace un plan de todo lo que queres hacer"
 - **L3** (verbatim) "lo voy a hacer con vercel" — deploy target confirmed; `adapter-auto` stays, Unit 4 only documents the deploy.
+- **L4** Unit 1 verified: `pnpm test` 18 passed, `eslint` clean, `svelte-check` 0 errors/0 warnings, `pnpm build` green.
+- **L5** Unit 2 verified: same four checks green; built CSS contains the `7d715a` token, `not-sr-only` and the skip-link z-index.
+- **L6** Pending decisions: real business data (address, phone, socials, domain) for the SEO unit; what to do with the footer legal links that currently point to `#`.
