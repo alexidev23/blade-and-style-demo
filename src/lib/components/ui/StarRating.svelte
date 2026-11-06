@@ -18,6 +18,7 @@
 	};
 
 	const filled = $derived(Math.min(max, Math.max(0, Math.round(rating))));
+	const indices = $derived(Array.from({ length: max }, (_, i) => i));
 	const label = $derived(`Calificación: ${rating.toLocaleString('es-AR')} de ${max}`);
 </script>
 
@@ -27,7 +28,7 @@
 	class={['inline-flex items-center gap-1 text-primary', className]}
 	{...rest}
 >
-	{#each { length: max } as _, i (i)}
-		<Star class={[sizes[size], i < filled ? 'fill-current' : 'text-muted/40']} />
+	{#each indices as index (index)}
+		<Star class={[sizes[size], index < filled ? 'fill-current' : 'text-muted/40']} />
 	{/each}
 </span>

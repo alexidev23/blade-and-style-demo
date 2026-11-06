@@ -27,9 +27,10 @@
 	};
 
 	const classes = $derived([
-		'inline-flex cursor-pointer items-center justify-center gap-2 rounded-sm px-6 py-3 font-semibold tracking-wide transition',
+		'inline-flex cursor-pointer items-center justify-center gap-2 rounded-sm font-semibold tracking-wide transition',
 		'[&_svg]:size-4 [&_svg]:shrink-0',
 		'disabled:cursor-not-allowed disabled:opacity-50',
+		sizes[size],
 		variants[variant],
 		className
 	]);

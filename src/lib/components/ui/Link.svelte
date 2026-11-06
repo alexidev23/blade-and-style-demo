@@ -27,6 +27,7 @@
 	};
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -- Link only handles in-page hash anchors and external URLs, never app routes. -->
 <a
 	{href}
 	target={isExternal ? '_blank' : undefined}
@@ -43,3 +44,4 @@
 >
 	{@render children()}
 </a>
+<!-- eslint-enable svelte/no-navigation-without-resolve -->
