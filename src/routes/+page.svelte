@@ -10,18 +10,27 @@
 	import Services from '#lib/components/sections/Services.svelte';
 	import Testimonials from '#lib/components/sections/Testimonials.svelte';
 	import BookingModal from '#lib/components/ui/BookingModal.svelte';
+	import { barbers } from '#lib/data/barbers.ts';
 	import { services } from '#lib/data/services.ts';
 	import type { Barber, BookingDraft, Service } from '#lib/types.ts';
+	import { resolveBookingSelection } from '../utils/booking';
 	import { todayISO } from '../utils/format';
 
 	let booking = $state<BookingDraft | null>(null);
 
 	function openBooking(options: { service?: Service; barber?: Barber } = {}) {
 		booking = {
-			serviceId: options.service?.id ?? services[0]?.id ?? '',
-			barberId: options.barber?.id ?? '',
+			...resolveBookingSelection(
+				{ serviceId: options.service?.id, barberId: options.barber?.id },
+				services,
+				barbers
+			),
 			date: todayISO()
 		};
+	}
+
+	function openFromDraft(draft: BookingDraft) {
+		booking = { ...resolveBookingSelection(draft, services, barbers), date: draft.date };
 	}
 
 	function closeBooking() {
@@ -33,7 +42,7 @@
 
 <main class="pt-16 lg:pt-20">
 	<Hero />
-	<BookingWidget onsearch={(draft) => (booking = draft)} />
+	<BookingWidget onsearch={openFromDraft} />
 	<Services onselect={(service) => openBooking({ service })} />
 	<Experience />
 	<Barbers onselect={(barber) => openBooking({ barber })} />
@@ -44,4 +53,6 @@
 
 <Footer />
 
-<BookingModal open={booking !== null} draft={booking} onclose={closeBooking} />
+{#key booking}
+	<BookingModal draft={booking} onClose={closeBooking} />
+{/key}

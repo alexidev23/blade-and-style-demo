@@ -8,6 +8,7 @@
 	import Scissors from '@lucide/svelte/icons/scissors';
 	import UserRound from '@lucide/svelte/icons/user-round';
 	import { onMount } from 'svelte';
+	import { getBarbersForService, resolveBookingSelection } from '../../../utils/booking';
 	import { todayISO } from '../../../utils/format';
 	import Button from '../ui/Button.svelte';
 	import Card from '../ui/Card.svelte';
@@ -24,14 +25,23 @@
 	let serviceId = $state(services[0]?.id ?? '');
 	let barberId = $state('');
 
+	const barberOptions = $derived(getBarbersForService(serviceId, barbers));
+
 	onMount(() => {
 		today = todayISO();
 		date = today;
 	});
 
+	function handleServiceChange(event: Event) {
+		serviceId = (event.currentTarget as HTMLSelectElement).value;
+		if (!getBarbersForService(serviceId, barbers).some((barber) => barber.id === barberId)) {
+			barberId = '';
+		}
+	}
+
 	function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
-		onsearch({ serviceId, barberId, date });
+		onsearch({ ...resolveBookingSelection({ serviceId, barberId }, services, barbers), date });
 	}
 </script>
 
@@ -93,7 +103,8 @@
 						id="booking-service"
 						name="service"
 						required
-						bind:value={serviceId}
+						value={serviceId}
+						onchange={handleServiceChange}
 						class="h-12 w-full cursor-pointer appearance-none rounded-sm border border-primary/12 bg-surface-raised pr-10 pl-4 text-text transition-colors focus:border-primary"
 					>
 						{#each services as service (service.id)}
@@ -125,7 +136,7 @@
 						class="h-12 w-full cursor-pointer appearance-none rounded-sm border border-primary/12 bg-surface-raised pr-10 pl-4 text-text transition-colors focus:border-primary"
 					>
 						<option value="">Cualquier maestro disponible</option>
-						{#each barbers as barber (barber.id)}
+						{#each barberOptions as barber (barber.id)}
 							<option value={barber.id}>{barber.name}</option>
 						{/each}
 					</select>
