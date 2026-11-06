@@ -53,7 +53,7 @@
 			bind:value={name}
 			required
 			autocomplete="name"
-			class="h-12 w-full rounded-sm border border-primary/12 bg-surface px-4 text-text transition-colors focus:border-primary"
+			class="h-12 w-full rounded-sm border border-line-strong bg-surface px-4 text-text transition-colors focus:border-primary"
 		/>
 	</div>
 	<div>
@@ -71,7 +71,7 @@
 			required
 			autocomplete="tel"
 			placeholder="+54 351 000-0000"
-			class="h-12 w-full rounded-sm border border-primary/12 bg-surface px-4 text-text transition-colors focus:border-primary"
+			class="h-12 w-full rounded-sm border border-line-strong bg-surface px-4 text-text transition-colors focus:border-primary"
 		/>
 	</div>
 

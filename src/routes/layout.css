@@ -11,6 +11,7 @@
 	--color-champagne: #e5b974; /* hover, precios, bordes iluminados */
 	--color-on-primary: #121316; /* texto sobre fondo dorado */
 	--color-muted: #8e929d; /* metadatos, íconos, placeholders */
+	--color-line-strong: #7d715a; /* bordes de controles: 3.1:1 sobre surface-raised */
 	--color-text: #f5f5f7; /* texto principal */
 	--color-error: #ffb4ab; /* validación de formularios */
 	--color-canvas-deep: #0d0e11; /* franjas de sección y footer */

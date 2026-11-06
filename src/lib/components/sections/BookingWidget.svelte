@@ -86,7 +86,7 @@
 					required
 					min={today}
 					bind:value={date}
-					class="h-12 w-full rounded-sm border border-primary/12 bg-surface-raised px-4 text-text transition-colors focus:border-primary"
+					class="h-12 w-full rounded-sm border border-line-strong bg-surface-raised px-4 text-text transition-colors focus:border-primary"
 				/>
 			</div>
 
@@ -105,7 +105,7 @@
 						required
 						value={serviceId}
 						onchange={handleServiceChange}
-						class="h-12 w-full cursor-pointer appearance-none rounded-sm border border-primary/12 bg-surface-raised pr-10 pl-4 text-text transition-colors focus:border-primary"
+						class="h-12 w-full cursor-pointer appearance-none rounded-sm border border-line-strong bg-surface-raised pr-10 pl-4 text-text transition-colors focus:border-primary"
 					>
 						{#each services as service (service.id)}
 							<option value={service.id}>
@@ -133,7 +133,7 @@
 						id="booking-barber"
 						name="barber"
 						bind:value={barberId}
-						class="h-12 w-full cursor-pointer appearance-none rounded-sm border border-primary/12 bg-surface-raised pr-10 pl-4 text-text transition-colors focus:border-primary"
+						class="h-12 w-full cursor-pointer appearance-none rounded-sm border border-line-strong bg-surface-raised pr-10 pl-4 text-text transition-colors focus:border-primary"
 					>
 						<option value="">Cualquier maestro disponible</option>
 						{#each barberOptions as barber (barber.id)}

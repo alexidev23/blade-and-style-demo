@@ -31,7 +31,7 @@
 
 			<div class="flex shrink-0 flex-col items-center gap-4 sm:flex-row">
 				<span
-					class="rounded-sm bg-surface-raised px-6 py-3 font-mono text-lg font-semibold tracking-[0.2em] text-primary uppercase select-all"
+					class="rounded-sm bg-surface-raised px-6 py-3 font-mono text-base font-semibold tracking-widest break-all text-primary uppercase select-all sm:text-lg"
 				>
 					<span class="sr-only">Código de descuento: </span>
 					WELCOMEBARBER

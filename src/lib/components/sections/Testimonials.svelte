@@ -14,7 +14,7 @@
 		description="Opiniones reales de miembros que confían su imagen personal a Blade & Style."
 	/>
 
-	<ul class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+	<ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 		{#each testimonials as testimonial (testimonial.id)}
 			<li class="flex">
 				<TestimonialCard {testimonial} />

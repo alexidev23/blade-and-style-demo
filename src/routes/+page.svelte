@@ -38,9 +38,16 @@
 	}
 </script>
 
+<a
+	href="#contenido"
+	class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-sm focus:bg-primary focus:px-4 focus:py-2 focus:font-semibold focus:text-on-primary"
+>
+	Saltar al contenido
+</a>
+
 <Header onbook={() => openBooking()} />
 
-<main class="pt-16 lg:pt-20">
+<main id="contenido" tabindex="-1" class="pt-16 lg:pt-20">
 	<Hero />
 	<BookingWidget onsearch={openFromDraft} />
 	<Services onselect={(service) => openBooking({ service })} />

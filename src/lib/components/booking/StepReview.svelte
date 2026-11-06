@@ -88,7 +88,7 @@
 					'rounded-sm border px-2 py-2 text-sm font-semibold transition-colors',
 					selectedTime === time
 						? 'border-primary bg-primary text-on-primary'
-						: 'border-primary/12 bg-surface text-muted hover:border-primary/40 hover:text-text'
+						: 'border-line-strong bg-surface text-muted hover:border-primary/40 hover:text-text'
 				]}
 			>
 				{time}
